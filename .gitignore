@@ -1,0 +1,70 @@
+# ─── Dependencies ───────────────────────────────────────────
+node_modules/
+.pnp
+.pnp.js
+
+# ─── Expo ───────────────────────────────────────────────────
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# EAS Build
+.easignore
+
+# ─── React Native ───────────────────────────────────────────
+# Android
+android/
+*.apk
+*.aab
+
+# iOS
+ios/
+*.ipa
+
+# ─── Backend ────────────────────────────────────────────────
+backend/node_modules/
+backend/dist/
+
+# ─── Prisma ─────────────────────────────────────────────────
+# Keep schema.prisma but ignore generated client if committed separately
+# backend/node_modules/.prisma/
+
+# ─── Environment Variables ──────────────────────────────────
+.env
+.env.local
+.env.development
+.env.production
+.env*.local
+backend/.env
+backend/.env.*
+docs/*
+
+# ─── OS ─────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ─── Editor ─────────────────────────────────────────────────
+.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# ─── Logs ───────────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ─── TypeScript ─────────────────────────────────────────────
+*.tsbuildinfo
+
+# ─── Testing ────────────────────────────────────────────────
+coverage/

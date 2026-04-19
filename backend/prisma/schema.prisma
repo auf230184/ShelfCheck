@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(uuid())
+  pushToken String?
+  products  Product[]
+  createdAt DateTime  @default(now())
+}
+
+model Product {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  barcode      String
+  name         String
+  brand        String?
+  imageUrl     String?
+  expiryDate   DateTime
+  quantity     Float    @default(100)
+  unit         String   @default("g")
+  calories     Float?
+  protein      Float?
+  carbs        Float?
+  fat          Float?
+  fiber        Float?
+  sugar        Float?
+  salt         Float?
+  nutriScore   String?
+  healthRating String
+  createdAt    DateTime @default(now())
+}
