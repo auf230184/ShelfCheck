@@ -20,8 +20,10 @@ A mobile app for tracking food expiry dates and nutritional health. Scan barcode
 Make sure you have these installed:
 
 - [Node.js](https://nodejs.org/) v18+
-- [Docker](https://www.docker.com/) (for PostgreSQL)
 - [Expo Go](https://expo.dev/go) app on your phone (for testing)
+- A free [Convex](https://convex.dev) account
+
+No Docker, no database setup required.
 
 ---
 
@@ -34,42 +36,19 @@ git clone https://github.com/<your-repo>/shelfcheck.git
 cd shelfcheck
 ```
 
-### 2. Start the database
+### 2. Install dependencies
 
 ```bash
-docker run --name shelfcheck-db \
-  -e POSTGRES_PASSWORD=postgres \
-  -e POSTGRES_DB=shelfcheck \
-  -p 5432:5432 \
-  -d postgres
+npm install --legacy-peer-deps
 ```
 
-### 3. Setup the backend
+### 3. Connect to Convex
 
 ```bash
-cd backend
-npm install
+npx convex dev
 ```
 
-Create a `.env` file in the `backend/` folder:
-
-```bash
-echo 'DATABASE_URL="postgresql://postgres:postgres@localhost:5432/shelfcheck"' > .env
-```
-
-Run migrations and generate Prisma client:
-
-```bash
-npx prisma migrate dev --name init
-npx prisma generate
-```
-
-### 4. Setup the Expo app
-
-```bash
-cd ../app
-npm install
-```
+This opens the browser to log in to Convex. Select the existing `shelfcheck` project. It will automatically create `.env.local` with your `EXPO_PUBLIC_CONVEX_URL`.
 
 ---
 
@@ -77,15 +56,13 @@ npm install
 
 You need **two terminals** running at the same time.
 
-**Terminal 1 – Backend:**
+**Terminal 1 – Convex backend:**
 ```bash
-cd backend
-npx tsx watch src/index.ts
+npx convex dev
 ```
 
 **Terminal 2 – Expo app:**
 ```bash
-cd app
 npx expo start
 ```
 
@@ -97,20 +74,21 @@ Then scan the QR code with the Expo Go app on your phone.
 
 ```
 shelfcheck/
-├── app/                  # Expo / React Native frontend
-│   ├── app/              # Expo Router screens
-│   ├── components/       # UI components
-│   ├── hooks/            # Custom React hooks
-│   ├── lib/              # API calls, utilities
-│   └── constants/        # Thresholds, config
-├── backend/              # Node.js + Hono REST API
-│   ├── src/
-│   │   ├── routes/       # API routes
-│   │   └── lib/          # Prisma, Open Food Facts, health rating
-│   └── prisma/           # DB schema + migrations
-└── docs/
-    ├── architecture.md
-    └── plan.md
+├── convex/               # Convex backend (database, queries, mutations)
+│   ├── _generated/       # Auto-generated – do not edit
+│   ├── schema.ts         # Database schema
+│   ├── products.ts       # Product queries + mutations
+│   └── users.ts          # User queries + mutations
+├── app/                  # Expo Router screens
+├── components/           # UI components
+├── hooks/                # Custom React hooks
+├── lib/                  # Utilities, health rating logic
+├── constants/            # Thresholds, config
+├── assets/
+├── docs/
+│   ├── architecture.md
+│   └── plan.md
+└── README.md
 ```
 
 ---
@@ -119,10 +97,8 @@ shelfcheck/
 
 | Command | Description |
 |---|---|
+| `npx convex dev` | Start Convex backend + sync functions |
 | `npx expo start` | Start Expo dev server |
-| `npx tsx watch src/index.ts` | Start backend with hot reload |
-| `npx prisma migrate dev` | Run new DB migrations |
-| `npx prisma studio` | Open visual DB browser |
 | `npx tsc --noEmit` | TypeScript type check |
 
 ---
@@ -132,8 +108,9 @@ shelfcheck/
 | Layer | Technology |
 |---|---|
 | Mobile | Expo, React Native, TypeScript, Expo Router |
-| Backend | Node.js, Hono |
-| Database | PostgreSQL, Prisma ORM |
+| Backend | Convex (hosted, serverless) |
+| Database | Convex DB (built-in, no setup needed) |
+| Auth | Convex Auth |
 | Barcode | expo-camera, expo-barcode-scanner |
 | Product API | Open Food Facts (free, no auth) |
 | Notifications | expo-notifications |
