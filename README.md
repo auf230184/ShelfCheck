@@ -32,7 +32,7 @@ No Docker, no database setup required.
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/<your-repo>/shelfcheck.git
+git clone https://github.com/auf230184/shelfcheck.git
 cd shelfcheck
 ```
 
