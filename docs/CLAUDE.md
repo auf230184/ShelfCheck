@@ -11,7 +11,7 @@ ShelfCheck is a mobile app (Expo / React Native + TypeScript) for tracking food 
 - Matteo Greiner
 
 ## Tech Stack
-- **Mobile:** Expo SDK, React Native, TypeScript, Expo Router
+- **Mobile:** Expo SDK, React Native, TypeScript, Expo Router, Expo UI
 - **Backend:** Node.js, Hono, REST API
 - **Database:** PostgreSQL + Prisma ORM
 - **Barcode:** expo-camera, expo-barcode-scanner
@@ -44,12 +44,13 @@ ShelfCheck is a mobile app (Expo / React Native + TypeScript) for tracking food 
 Traffic light system per product (not per day):
 - 🟢 GREEN – Nutri-Score A/B, or low sugar/fat/salt + good protein/fiber
 - 🟡 YELLOW – Nutri-Score C, or moderate values
-- 🔴 RED – Nutri-Score D/E, or high sugar (>15g/100g), high calories (>400kcal/100g), high salt (>1.5g/100g)
+- 🔴 RED – Nutri-Score D/E, or high sugar (>15g/100g), high calories (>600kcal/100g), high salt (>1.5g/100g)
 
 ## Git
 - Branch: `feat/<feature-name>`, `fix/<bug-name>`
 - Commit messages in English, imperative: "Add barcode scanner screen"
 - Always run `npx tsc --noEmit` before committing
+- Never mention yourself in commit messages no `CoAuthored By Claude` or similar
 
 ## Compact Instructions
 When compacting, preserve:

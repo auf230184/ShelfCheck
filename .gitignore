@@ -1,70 +1,41 @@
-# ─── Dependencies ───────────────────────────────────────────
-node_modules/
-.pnp
-.pnp.js
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
-# ─── Expo ───────────────────────────────────────────────────
+# dependencies
+node_modules/
+
+# Expo
 .expo/
 dist/
 web-build/
 expo-env.d.ts
 
-# EAS Build
-.easignore
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
 
-# ─── React Native ───────────────────────────────────────────
-# Android
-android/
-*.apk
-*.aab
+# Metro
+.metro-health-check*
 
-# iOS
-ios/
-*.ipa
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
 
-# ─── Backend ────────────────────────────────────────────────
-backend/node_modules/
-backend/dist/
-
-# ─── Prisma ─────────────────────────────────────────────────
-# Keep schema.prisma but ignore generated client if committed separately
-# backend/node_modules/.prisma/
-
-# ─── Environment Variables ──────────────────────────────────
-.env
-.env.local
-.env.development
-.env.production
-.env*.local
-backend/.env
-backend/.env.*
-docs/*
-
-# ─── OS ─────────────────────────────────────────────────────
+# macOS
 .DS_Store
-.DS_Store?
-._*
-Thumbs.db
-ehthumbs.db
-Desktop.ini
+*.pem
 
-# ─── Editor ─────────────────────────────────────────────────
-.vscode/settings.json
-.idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
+# local env files
+.env*.local
 
-# ─── Logs ───────────────────────────────────────────────────
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# ─── TypeScript ─────────────────────────────────────────────
+# typescript
 *.tsbuildinfo
 
-# ─── Testing ────────────────────────────────────────────────
-coverage/
+# generated native folders
+/ios
+/android

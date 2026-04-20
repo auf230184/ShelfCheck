@@ -137,7 +137,7 @@ Located in `backend/src/lib/healthRating.ts` and mirrored in `app/lib/nutrition.
 Priority order:
 1. If Nutri-Score exists: A/B → GREEN, C → YELLOW, D/E → RED
 2. Fallback scoring (per 100g):
-   - calories > 400 → +2 points
+   - calories > 400 → +1 points
    - sugar > 15g → +2 points
    - salt > 1.5g → +2 points
    - fat > 20g → +1 point
